@@ -1,5 +1,5 @@
 class ModeloClima:
-    def __init__(self):
+    def __init__(self, w_h=0.5, w_n=0.3, w_tf=0.2):
         self.tabla_tf = {
             10: 1.00,
             12: 0.90,
@@ -12,6 +12,20 @@ class ModeloClima:
             26: 0.20,
             28: 0.10
         }
+        self.w_h = w_h
+        self.w_n = w_n
+        self.w_tf = w_tf
+
+    def set_pesos(self, w_h, w_n, w_tf):
+        self.w_h = w_h
+        self.w_n = w_n
+        self.w_tf = w_tf
+
+    def validar_pesos(self, w_h, w_n, w_tf):
+        suma = w_h + w_n + w_tf
+        if abs(suma - 1.0) < 1e-9:
+            return True
+        return False
 
     def calcular_tf(self, temp):
         if temp <= 10:
@@ -28,11 +42,17 @@ class ModeloClima:
         n = nubosidad / 100.0
         return h, n
 
-    def calcular_indice(self, h, n, tf):
-        return 0.5 * h + 0.3 * n + 0.2 * tf
+    def calcular_indice(self, h, n, tf, w_h=None, w_n=None, w_tf=None):
+        if w_h is None:
+            w_h = self.w_h
+        if w_n is None:
+            w_n = self.w_n
+        if w_tf is None:
+            w_tf = self.w_tf
+        return w_h * h + w_n * n + w_tf * tf
 
-    def calcular_indice_ajuste(self, h, n, tf): #Ajuste 
-        return 0.1 * h + 0.1 * n + 0.8 * tf
+    def calcular_indice_ajuste(self, h, n, tf):  # Ajuste
+        return self.w_h * h + self.w_n * n + self.w_tf * tf
 
     def determinar_estado(self, indice):
         if indice < 0.40:
