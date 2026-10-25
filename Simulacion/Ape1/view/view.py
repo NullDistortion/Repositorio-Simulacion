@@ -28,25 +28,24 @@ class VistaClima:  # Clase creada con ayuda de IA
         plt.tight_layout()
         plt.show()
 
-        # -----------------------------
+       # -----------------------------
         # Grafica para las practicas
         # -----------------------------
         try:
-            t = list(range(len(datos)))
-            P = []
-            for d in datos:
-                try:
-                    P.append(float(d[7]))
-                except (IndexError, ValueError):
-                    P.append(0.0)
+            horas = [d[0] for d in datos]
+            P = [float(d[7]) for d in datos]
+
             plt.figure(figsize=(10, 5))
-            plt.plot(t, P, label="Indice de lluvia")
-            plt.xlabel("Tiempo")
-            plt.ylabel("Indice I")
-            plt.title("Modelo de simulacion atmosferica")
+            plt.plot(horas, P, marker="o", label="Índice de lluvia")
+            plt.axhline(y=0.40, color="gray", linestyle="--", label="Umbral Baja posibilidad (0.40)")
+            plt.axhline(y=0.60, color="orange", linestyle="--", label="Umbral Lluvia probable (0.60)")
+            plt.axhline(y=0.75, color="red", linestyle="--", label="Umbral Lluvia (0.75)")
+            plt.xlabel("Hora")
+            plt.ylabel("Índice I")
+            plt.title("Modelo de Simulación Atmosférica")
             plt.grid(True)
             plt.legend()
             plt.tight_layout()
             plt.show()
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"Error al generar la gráfica: {e}")
