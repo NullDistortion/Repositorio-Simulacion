@@ -59,3 +59,38 @@ Incluye 101 filas de datos: tiempo 0 hasta tiempo 100.
 - Vista: `VistaConsola`.
 - Controlador: `ControladorSir`.
 - Entrada: `Main`.
+
+## Requisitos del Sistema y Dependencias
+
+Este proyecto no requiere gestores de paquetes externos (como Maven o Gradle) ni librerías `.jar` adicionales, ya que el motor de simulación fue construido utilizando exclusivamente la biblioteca estándar de **Java SE** (`java.nio`, `java.util`, `java.io`).
+
+### Herramientas Requeridas
+
+1. **Java Development Kit (JDK):**
+   - Versión: **JDK 17** o superior (recomendado **OpenJDK 21**).
+   - Verifica tu instalación en terminal con:
+     ```bash
+     javac -version
+     java -version
+     ```
+   - Si no está instalado (en distribuciones basadas en Ubuntu/Debian):
+     ```bash
+     sudo apt update && sudo apt install openjdk-21-jdk
+     ```
+   - En distribuciones basadas en Arch Linux:
+     ```bash
+     sudo pacman -S jdk-openjdk
+     ```
+
+2. **NetLogo (Visualización):**
+   - Versión: **NetLogo 7.0.x** (probado en NetLogo 7.0.4).
+   - Requiere la extensión nativa `csv` (incluida por defecto en la instalación de NetLogo).
+
+---
+
+## Compilación y Ejecución
+
+1. **Compilar el proyecto Java:**
+   ```bash
+   cd SIMULACION_04/src
+   javac Main.java
