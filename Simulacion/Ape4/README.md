@@ -94,3 +94,4 @@ Este proyecto no requiere gestores de paquetes externos (como Maven o Gradle) ni
    ```bash
    cd SIMULACION_04/src
    javac Main.java
+   java Main.java
