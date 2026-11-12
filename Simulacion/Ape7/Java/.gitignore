@@ -1,0 +1,33 @@
+# Archivos compilados de Java
+*.class
+*.mtj.tmp/
+
+# Empaquetados
+*.jar
+*.war
+*.nar
+*.ear
+
+# Directorios de compilación (IDE / Maven / Gradle)
+bin/
+out/
+target/
+build/
+.gradle/
+
+# Logs de la máquina virtual
+hs_err_pid*
+replay_pid*
+
+# IDEs (IntelliJ IDEA, Eclipse, NetBeans, VS Code)
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+nbproject/private/
+.vscode/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
