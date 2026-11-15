@@ -5,7 +5,7 @@ class MonteCarloGenerator:
     Generador Congruencial Lineal (LCG): X_{i+1} = (a * X_i + c) mod m
     Parámetros Numerical Recipes (sin desbordamiento en enteros de 64 bits).
     """
-    M = 4294967296  # 2^32
+    M = 4294967296
     A = 1664525
     C = 1013904223
 

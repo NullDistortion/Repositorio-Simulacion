@@ -4,7 +4,6 @@ from service.monteCarloGenerator import MonteCarloGenerator
 from timer.timer import Timer
 
 class Calculator:
-    # Cuadro estadístico Chi-cuadrado para alfa = 0.05 (gl = k - 1)
     TABLA_CHI_ALFA_005 = {
         9: 16.9190,   # k = 10 intervalos
         19: 30.1435,  # k = 20 intervalos
@@ -16,7 +15,6 @@ class Calculator:
         self.timer = timer
 
     def ejecutar_escenario(self, n_puntos: int, k_intervalos: int = 10) -> Escenario:
-        # 1. Fase Monte Carlo cronometrada aisladamente
         self.generador.reiniciar()
         puntos_dentro = 0
 
@@ -31,7 +29,6 @@ class Calculator:
         pi_estimado = 4.0 * (puntos_dentro / n_puntos)
         error_absoluto = abs(pi_estimado - math.pi)
 
-        # 2. Fase de validación estadística Chi-cuadrado (sobre los 2*N números usados)
         self.generador.reiniciar()
         total_numeros = 2 * n_puntos
         frecuencias_obs = [0] * k_intervalos
